@@ -1,0 +1,328 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Windows Security - WhatsApp Chat</title>
+<!-- BEGIN: Scripts and Fonts -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#006d2f",
+            "on-primary": "#ffffff",
+            "primary-container": "#25d366",
+            "on-primary-container": "#005523",
+            "surface": "#fff8f3",
+            "on-surface": "#1e1b16",
+            "surface-variant": "#e9e1d9",
+            "on-surface-variant": "#3c4a3d",
+            "outline-variant": "#bbcbb9",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6",
+            "whatsapp-bg": "#E5DDD5",
+            "whatsapp-incoming": "#DCF8C6",
+            "whatsapp-outgoing": "#ffffff",
+            "surface-container-low": "#fbf2ea",
+            "surface-container-high": "#efe7df",
+            "surface-container-highest": "#e9e1d9",
+            "surface-container-lowest": "#ffffff"
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          spacing: {
+            'header-h': '64px',
+            'footer-h': '70px',
+            'bubble-gap': '12px'
+          }
+        }
+      }
+    }
+  </script>
+<!-- END: Scripts and Fonts -->
+<style data-purpose="chat-styling">
+    /* WhatsApp Chat Wallpaper Pattern */
+    .chat-wallpaper {
+      background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+      background-color: #E5DDD5;
+      background-blend-mode: overlay;
+    }
+
+    /* Message Bubble Tail Styles */
+    .bubble-in::before {
+      content: "";
+      position: absolute;
+      left: -8px;
+      top: 0;
+      width: 12px;
+      height: 12px;
+      background-color: #DCF8C6;
+      clip-path: polygon(100% 0, 0 0, 100% 100%);
+    }
+
+    .bubble-out::before {
+      content: "";
+      position: absolute;
+      right: -8px;
+      top: 0;
+      width: 12px;
+      height: 12px;
+      background-color: #ffffff;
+      clip-path: polygon(0 0, 100% 0, 0 100%);
+    }
+
+    /* Animation for new messages */
+    @keyframes slideUp {
+      from { transform: translateY(10px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .animate-msg {
+      animation: slideUp 0.2s ease-out forwards;
+    }
+
+    /* Hide scrollbar for cleaner look but keep functionality */
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-sans selection:bg-primary/30">
+<!-- BEGIN: Overlays -->
+<!-- Stop and Think Warning -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/60 backdrop-blur-sm hidden" id="overlay-warning">
+<div class="bg-surface w-full max-w-sm rounded-2xl overflow-hidden shadow-2xl border border-outline-variant/30 animate-msg">
+<div class="p-6 flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-error-container text-error rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-[40px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<h2 class="text-xl font-bold text-error mb-2 tracking-tight">STOP AND THINK!</h2>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+          Interacting with suspicious messages—by clicking links, replying, or calling—can expose your personal information and confirm your number is active for more scams.
+        </p>
+<button class="w-full bg-primary text-on-primary font-semibold py-3 rounded-xl shadow-lg active:scale-[0.98] transition-all" id="close-warning">
+          Go Back
+        </button>
+</div>
+</div>
+</div>
+<!-- Action Success (Block/Report) -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/60 backdrop-blur-sm hidden" id="overlay-success">
+<div class="bg-surface w-full max-w-sm rounded-2xl p-6 flex flex-col items-center text-center shadow-2xl border border-outline-variant/30">
+<div class="w-16 h-16 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-[40px]" id="success-icon" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h2 class="text-xl font-bold mb-2" id="success-title">Success</h2>
+<p class="text-sm text-on-surface-variant mb-6" id="success-message">Operation completed successfully.</p>
+<button class="w-full bg-primary text-on-primary font-semibold py-3 rounded-xl shadow-lg active:scale-[0.98] transition-all" id="close-success">
+        Done
+      </button>
+</div>
+</div>
+<!-- WhatsApp Context Menu -->
+<div class="fixed inset-0 z-[60] hidden" id="menu-backdrop">
+<div class="absolute inset-0 bg-transparent"></div> <!-- Click catcher -->
+<div class="absolute right-4 top-14 w-52 bg-white shadow-xl rounded-lg overflow-hidden border border-gray-200 py-1 flex flex-col">
+<button class="w-full text-left px-4 py-3 text-[15px] hover:bg-gray-100 active:bg-gray-200">View contact</button>
+<button class="w-full text-left px-4 py-3 text-[15px] hover:bg-gray-100 active:bg-gray-200">Media, links, and docs</button>
+<button class="w-full text-left px-4 py-3 text-[15px] hover:bg-gray-100 active:bg-gray-200">Search</button>
+<button class="w-full text-left px-4 py-3 text-[15px] hover:bg-gray-100 active:bg-gray-200" id="btn-report">Report</button>
+<button class="w-full text-left px-4 py-3 text-[15px] hover:bg-gray-100 active:bg-gray-200 text-error font-medium" id="btn-block">Block</button>
+</div>
+</div>
+<!-- END: Overlays -->
+<!-- BEGIN: Chat Header -->
+<header class="fixed top-0 w-full h-header-h z-50 bg-[#F0F2F5] flex items-center justify-between px-4 shadow-sm">
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-gray-600">arrow_back</button>
+<div class="flex items-center gap-3 cursor-pointer">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-gray-300">
+<!-- Using provided logo placeholder -->
+<img alt="Windows Security" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIm09d-9WcniOoZj-jSmfz0OsU3sxDO1bC4qfcyCdm1j5eZ-ZDWugRHh2eKzixZjjtb8qdAmhgtQIfYIk5deZ7rWbSckkADQn4_Hfk_NZhxNhOcQR9RYS2kgRoy-cSgn_82XOqUhrQ584Y7dQ3Gv-UYcEo_eABVZdw2IZ7_nU5IZ7SEezZR2K466YJf73C4DJPby7AUKFItymD_XqnHFVh23KJmHDc8wE4bUStPXAUxPXu9Ne5CODkBvrUFa99ho7E2gucrN0rJq8">
+</div>
+<div class="flex flex-col">
+<span class="font-semibold text-base leading-tight">Windows Security</span>
+<span class="text-[12px] text-gray-500">Online</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 text-gray-600">
+<button class="material-symbols-outlined hover:text-gray-900" id="btn-video">videocam</button>
+<button class="material-symbols-outlined hover:text-gray-900" id="btn-call">call</button>
+<button class="material-symbols-outlined hover:text-gray-900" id="menu-trigger">more_vert</button>
+</div>
+</header>
+<!-- END: Chat Header -->
+<!-- BEGIN: Main Chat View -->
+<main class="chat-wallpaper h-screen w-full pt-header-h pb-footer-h overflow-y-auto hide-scrollbar px-4 flex flex-col" id="chat-scroller">
+<!-- Date Divider -->
+<div class="flex justify-center my-6">
+<span class="bg-white/90 px-3 py-1 rounded-md text-[11px] font-bold text-gray-500 uppercase tracking-wider shadow-sm">Today</span>
+</div>
+<!-- E2E Encryption Message -->
+<div class="bg-[#FEF9D7] p-2.5 rounded-lg text-center max-w-[90%] mx-auto shadow-sm border border-[#E1D9B7] mb-6">
+<p class="text-[12px] text-gray-600 leading-tight">
+<span class="material-symbols-outlined text-[13px] align-text-bottom mr-1" style="font-variation-settings: 'FILL' 1;">lock</span>
+        Messages and calls are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them. Tap to learn more.
+      </p>
+</div>
+<!-- Incoming Message (The Scam) -->
+<div class="flex flex-col items-start mb-6 max-w-[85%]">
+<div class="relative bubble-in bg-whatsapp-incoming p-2 rounded-lg rounded-tl-none shadow-sm text-[14.5px] text-gray-800">
+<!-- Message Image Attachment -->
+<div class="w-full mb-2 overflow-hidden rounded-md border border-black/5">
+<img alt="Security Alert" class="w-full h-auto block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDea-n1x7BGdf4-aA8vSiw_BRzHl1XlamaCVlhoWwR7oehRfMLc2XZzMa0UQVwct9r0_m-Qbpj020BZZvXaJv2yjG_Hc5aq4sGQJcg78LDPkTzq-qMnV2cr5jcif_l-KSj_jM7OSnCN4OVNzX5HaNsKiO2mOQYR4X_BT7Mvp4drHm1Ct0PLh32GeOIvEOIHbKEuiq_9WPFqotqn_fAoy5m80q1UmbhD4cXb80BIuyI9eondsau8VkISuMcw1wyVmHFxCbzF901E8Is">
+</div>
+<!-- Message Text Content -->
+<p class="leading-snug mb-1">
+<span class="font-bold">URGENT:</span> Your computer has been compromised. We have detected a critical virus attempting to access your personal data. Please review the attached security alert and contact our technician immediately at <a class="text-blue-600 underline" href="#" id="link-scam">bit.ly/system-fix</a>
+</p>
+<!-- Time and Status -->
+<div class="flex justify-end items-center gap-1">
+<span class="text-[10px] text-gray-500">11:20 AM</span>
+</div>
+</div>
+</div>
+<!-- Dynamic Reply Container -->
+<div class="flex flex-col gap-4" id="replies"></div>
+</main>
+<!-- END: Main Chat View -->
+<!-- BEGIN: Message Input -->
+<footer class="fixed bottom-0 w-full bg-[#F0F2F5] px-2 py-2 flex items-center gap-2 z-50">
+<div class="flex flex-1 items-center bg-white rounded-full px-3 py-1.5 shadow-sm border border-gray-200">
+<button class="material-symbols-outlined text-gray-500 p-1">sentiment_satisfied</button>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-base py-1 px-2" id="chat-input" placeholder="Type a message" type="text">
+<button class="material-symbols-outlined text-gray-500 p-1 -rotate-45">attachment</button>
+<button class="material-symbols-outlined text-gray-500 p-1">photo_camera</button>
+</div>
+<button class="w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-md active:scale-90 transition-transform" id="send-trigger">
+<span class="material-symbols-outlined" id="send-icon" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+</footer>
+<!-- END: Message Input -->
+<!-- BEGIN: Logic & Interaction -->
+<script data-purpose="chat-logic">
+    const scroller = document.getElementById('chat-scroller');
+    const input = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('send-trigger');
+    const sendIcon = document.getElementById('send-icon');
+    const repliesContainer = document.getElementById('replies');
+    
+    // Warning Elements
+    const warningOverlay = document.getElementById('overlay-warning');
+    const closeWarning = document.getElementById('close-warning');
+    const scamLink = document.getElementById('link-scam');
+    
+    // Header Buttons
+    const btnCall = document.getElementById('btn-call');
+    const btnVideo = document.getElementById('btn-video');
+    const menuTrigger = document.getElementById('menu-trigger');
+    const menuBackdrop = document.getElementById('menu-backdrop');
+    
+    // Success Elements
+    const successOverlay = document.getElementById('overlay-success');
+    const successTitle = document.getElementById('success-title');
+    const successMsg = document.getElementById('success-message');
+    const successIcon = document.getElementById('success-icon');
+    const closeSuccess = document.getElementById('close-success');
+    const btnReport = document.getElementById('btn-report');
+    const btnBlock = document.getElementById('btn-block');
+
+    // Utility: Trigger Warning
+    function showWarning(e) {
+      if(e) e.preventDefault();
+      warningOverlay.classList.remove('hidden');
+    }
+
+    // Input Handling
+    input.addEventListener('input', () => {
+      sendIcon.textContent = input.value.trim() ? 'send' : 'mic';
+    });
+
+    function sendMessage() {
+      const text = input.value.trim();
+      if (!text) {
+        showWarning();
+        return;
+      }
+
+      // Add user message to UI
+      const now = new Date();
+      const time = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+      
+      const msgWrap = document.createElement('div');
+      msgWrap.className = 'flex flex-col items-end mb-4 self-end max-w-[85%] animate-msg';
+      msgWrap.innerHTML = `
+        <div class="relative bubble-out bg-whatsapp-outgoing p-2 rounded-lg rounded-tr-none shadow-sm text-[14.5px] text-gray-800">
+          <p class="leading-snug mb-1">${text}</p>
+          <div class="flex justify-end items-center gap-1">
+            <span class="text-[10px] text-gray-500">${time}</span>
+            <span class="material-symbols-outlined text-[15px] text-blue-400" style="font-variation-settings: 'FILL' 1;">done_all</span>
+          </div>
+        </div>
+      `;
+      
+      repliesContainer.appendChild(msgWrap);
+      input.value = '';
+      sendIcon.textContent = 'mic';
+      
+      // Auto Scroll
+      scroller.scrollTop = scroller.scrollHeight;
+
+      // Delayed Warning after sending
+      setTimeout(showWarning, 800);
+    }
+
+    // Event Listeners
+    sendBtn.addEventListener('click', () => {
+      if(sendIcon.textContent === 'send') sendMessage();
+      else showWarning();
+    });
+
+    input.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendMessage();
+    });
+
+    scamLink.addEventListener('click', showWarning);
+    btnCall.addEventListener('click', showWarning);
+    btnVideo.addEventListener('click', showWarning);
+    closeWarning.addEventListener('click', () => warningOverlay.classList.add('hidden'));
+
+    // Menu Logic
+    menuTrigger.addEventListener('click', () => menuBackdrop.classList.toggle('hidden'));
+    menuBackdrop.addEventListener('click', (e) => {
+      if(e.target === menuBackdrop || e.target.closest('button')) menuBackdrop.classList.add('hidden');
+    });
+
+    // Report/Block Success logic
+    function showSuccess(title, message, icon) {
+      successTitle.textContent = title;
+      successMsg.textContent = message;
+      successIcon.textContent = icon;
+      successOverlay.classList.remove('hidden');
+    }
+
+    btnReport.addEventListener('click', () => {
+      showSuccess("Reported Successfully", "The contact has been reported. WhatsApp will review the recent messages.", "check_circle");
+    });
+
+    btnBlock.addEventListener('click', () => {
+      showSuccess("Contact Blocked", "You will no longer receive messages or calls from this contact.", "block");
+    });
+
+    closeSuccess.addEventListener('click', () => successOverlay.classList.add('hidden'));
+
+    // Initial Scroll
+    window.onload = () => {
+      scroller.scrollTop = scroller.scrollHeight;
+    };
+  </script>
+<!-- END: Logic & Interaction -->
+</body></html>

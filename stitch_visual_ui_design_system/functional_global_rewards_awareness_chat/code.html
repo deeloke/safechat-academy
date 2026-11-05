@@ -1,0 +1,446 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Global Rewards - Message</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#e9e1d9",
+                    "secondary-container": "#a5ede0",
+                    "surface-container-low": "#faf2ea",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#f7efe7",
+                    "on-surface": "#1e1b16",
+                    "tertiary-fixed-dim": "#b3cf9f",
+                    "on-tertiary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#016d2f",
+                    "primary-container": "#006d2f",
+                    "on-surface-variant": "#3f493f",
+                    "on-error": "#ffffff",
+                    "success-container": "#25d366",
+                    "secondary": "#1c695f",
+                    "surface-variant": "#e9e1d9",
+                    "on-primary-container": "#90ec9f",
+                    "on-tertiary-fixed": "#0c2003",
+                    "background": "#fff8f2",
+                    "outline": "#6f7a6e",
+                    "tertiary-fixed": "#cfebba",
+                    "primary-fixed": "#9bf7a9",
+                    "secondary-fixed-dim": "#8dd4c7",
+                    "primary": "#005222",
+                    "on-primary-fixed": "#002109",
+                    "whatsapp-incoming": "#DCF8C6",
+                    "whatsapp-bg": "#E5DDD5",
+                    "on-secondary-fixed-variant": "#005048",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#226e64",
+                    "tertiary-container": "#4d653e",
+                    "on-error-container": "#93000a",
+                    "outline-variant": "#bbcbb9",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#364d28",
+                    "inverse-primary": "#7fda8f",
+                    "surface-container": "#f5ede4",
+                    "error-container": "#ffdad6",
+                    "surface-container-high": "#efe7de",
+                    "tertiary": "#364d28",
+                    "surface": "#fff8f2",
+                    "surface-dim": "#e0d9d1",
+                    "on-primary-fixed-variant": "#005322",
+                    "primary-fixed-dim": "#7fda8f",
+                    "inverse-surface": "#33302a",
+                    "secondary-fixed": "#a8f0e3",
+                    "on-secondary-fixed": "#00201c",
+                    "on-tertiary-container": "#c5e1b0",
+                    "on-background": "#1e1b16",
+                    "surface-bright": "#fff8f2",
+                    "whatsapp-outgoing": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "bubble-padding-h": "0.75rem",
+                    "bubble-padding-v": "0.5rem",
+                    "stack-md": "1rem",
+                    "header-height": "56px",
+                    "stack-sm": "0.25rem",
+                    "page-margin": "1rem"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["22px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "400"}],
+                    "label-md": ["13px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-lg": ["17px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md-mobile": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "22px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .chat-container {
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+            background-color: #E5DDD5;
+            background-blend-mode: overlay;
+        }
+        .bubble-incoming::before {
+            content: "";
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background-color: #DCF8C6;
+            clip-path: polygon(100% 0, 0 0, 100% 100%);
+        }
+        .bubble-outgoing::before {
+            content: "";
+            position: absolute;
+            right: -8px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background-color: #ffffff;
+            clip-path: polygon(0 0, 100% 0, 0 100%);
+        }
+        @keyframes slideInUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-slide-up {
+            animation: slideInUp 0.3s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        body {
+            min-height: 100dvh;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-hidden">
+<!-- Link Warning Overlay -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/60 backdrop-blur-sm transition-opacity duration-300 hidden" id="link-warning-overlay">
+<div class="bg-surface w-full max-w-sm rounded-xl overflow-hidden shadow-2xl border border-outline-variant/30">
+<div class="p-6 flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-error-container text-error rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-[40px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<h2 class="font-headline-lg text-error mb-3">Stop and Think</h2>
+<p class="font-body-md text-on-surface-variant leading-relaxed mb-6">
+                    You should not click on links from unknown contacts as they may lead to identity theft or malware.
+                </p>
+<button class="w-full bg-primary text-on-primary font-label-md py-3 rounded-full shadow-lg active:scale-95 transition-all" id="close-link-warning">
+                    Go Back
+                </button>
+</div>
+</div>
+</div>
+<!-- Reply/Call Warning Overlay -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/60 backdrop-blur-sm transition-opacity duration-300 hidden" id="reply-warning-overlay">
+<div class="bg-surface w-full max-w-sm rounded-xl overflow-hidden shadow-2xl border border-outline-variant/30">
+<div class="p-6 flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-error-container text-error rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-[40px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<h2 class="font-headline-lg text-error mb-3">STOP AND THINK!</h2>
+<p class="font-body-md text-on-surface-variant leading-relaxed mb-6">Replying to or calling unknown numbers validates to scammers that your phone number is active and monitored. This makes you a target for more frequent and sophisticated attacks.</p>
+<button class="w-full bg-primary text-on-primary font-label-md py-3 rounded-full shadow-lg active:scale-95 transition-all" id="close-reply-warning">
+                    Go Back
+                </button>
+</div>
+</div>
+</div>
+<!-- WhatsApp Options Menu -->
+<div class="fixed inset-0 z-[60] hidden" id="whatsapp-menu-backdrop">
+<div class="absolute inset-0 bg-black/20"></div>
+<div class="absolute right-2 top-14 w-48 bg-surface-container-lowest shadow-xl rounded-lg overflow-hidden border border-outline-variant/30 py-1" id="whatsapp-menu-content">
+<button class="w-full text-left px-4 py-3 text-body-md hover:bg-surface-container-high active:bg-surface-container-high transition-colors">View contact</button>
+<button class="w-full text-left px-4 py-3 text-body-md hover:bg-surface-container-high active:bg-surface-container-high transition-colors">Media, links, and docs</button>
+<button class="w-full text-left px-4 py-3 text-body-md hover:bg-surface-container-high active:bg-surface-container-high transition-colors">Search</button>
+<button class="w-full text-left px-4 py-3 text-body-md hover:bg-surface-container-high active:bg-surface-container-high transition-colors">Mute notifications</button>
+<button class="w-full text-left px-4 py-3 text-body-md hover:bg-surface-container-high active:bg-surface-container-high transition-colors" id="more-actions-trigger">
+<div class="flex justify-between items-center">
+<span class="">More</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">chevron_right</span>
+</div>
+</button>
+</div>
+</div>
+<!-- "More" Submenu -->
+<div class="fixed inset-0 z-[61] hidden" id="more-menu-backdrop">
+<div class="absolute inset-0 bg-transparent"></div>
+<div class="absolute right-2 top-14 w-48 bg-surface-container-lowest shadow-xl rounded-lg overflow-hidden border border-outline-variant/30 py-1">
+<button class="w-full text-left px-4 py-3 text-body-md hover:bg-surface-container-high active:bg-surface-container-high transition-colors" id="report-btn">Report</button>
+<button class="w-full text-left px-4 py-3 text-body-md hover:bg-surface-container-high active:bg-surface-container-high transition-colors text-error" id="block-btn">Block</button>
+<button class="w-full text-left px-4 py-3 text-body-md hover:bg-surface-container-high active:bg-surface-container-high transition-colors">Clear chat</button>
+<button class="w-full text-left px-4 py-3 text-body-md hover:bg-surface-container-high active:bg-surface-container-high transition-colors">Export chat</button>
+<button class="w-full text-left px-4 py-3 text-body-md hover:bg-surface-container-high active:bg-surface-container-high transition-colors">Add shortcut</button>
+</div>
+</div>
+<!-- Success Overlays -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/60 backdrop-blur-sm hidden" id="block-success-overlay">
+<div class="bg-surface w-full max-w-sm rounded-xl overflow-hidden shadow-2xl p-6 flex flex-col items-center text-center border border-outline-variant/30">
+<div class="w-16 h-16 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-[40px]" style="font-variation-settings: 'FILL' 1;">block</span>
+</div>
+<h2 class="font-headline-lg text-on-surface mb-2">Contact Blocked</h2>
+<p class="font-body-md text-on-surface-variant mb-6">You will no longer receive messages or calls from this contact. They will not be notified.</p>
+<button class="w-full bg-primary text-on-primary font-label-md py-3 rounded-full shadow-lg active:scale-95 transition-all" id="close-block-success">Done</button>
+</div>
+</div>
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/60 backdrop-blur-sm hidden" id="report-success-overlay">
+<div class="bg-surface w-full max-w-sm rounded-xl overflow-hidden shadow-2xl p-6 flex flex-col items-center text-center border border-outline-variant/30">
+<div class="w-16 h-16 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-[40px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h2 class="font-headline-lg text-on-surface mb-2">Reported Successfully</h2>
+<p class="font-body-md text-on-surface-variant mb-6">The contact has been reported. WhatsApp will review the recent messages.</p>
+<button class="w-full bg-primary text-on-primary font-label-md py-3 rounded-full shadow-lg active:scale-95 transition-all" id="close-report-success">Done</button>
+</div>
+</div>
+<!-- Top AppBar -->
+<header class="fixed top-0 w-full h-[56px] z-50 bg-surface shadow-sm flex items-center justify-between px-page-margin">
+<div class="flex items-center gap-3 cursor-pointer" id="header-clickable">
+<button class="material-symbols-outlined text-on-surface-variant active:opacity-70 transition-opacity">arrow_back</button>
+<div class="relative w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-highest overflow-hidden">
+<span class="material-symbols-outlined text-primary scale-125" style="font-variation-settings: 'FILL' 1;">card_giftcard</span>
+</div>
+<div class="flex flex-col">
+<h1 class="font-headline-md text-headline-md-mobile text-on-surface leading-tight">Global Rewards</h1>
+<span class="font-label-sm text-label-sm text-on-surface-variant opacity-80">Online</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-highest transition-colors p-2 rounded-full" id="video-call-btn">videocam</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-highest transition-colors p-2 rounded-full" id="voice-call-btn">call</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-highest transition-colors p-2 rounded-full" id="menu-trigger">more_vert</button>
+</div>
+</header>
+<!-- Main Chat Canvas -->
+<main class="chat-container h-screen w-full pt-[56px] pb-[70px] overflow-y-auto px-page-margin flex flex-col gap-stack-md" id="chat-messages">
+<!-- Date Divider -->
+<div class="flex justify-center my-4">
+<span class="bg-surface-container-high px-3 py-1 rounded-lg text-label-md font-label-md text-on-surface-variant shadow-sm">TODAY</span>
+</div>
+<!-- Security Warning -->
+<div class="bg-surface-container-lowest p-3 rounded-lg text-center max-w-[85%] mx-auto shadow-sm border border-outline-variant/30">
+<p class="text-label-md text-on-surface-variant leading-relaxed">
+<span class="material-symbols-outlined text-[14px] align-middle mr-1">lock</span>
+                Messages and calls are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them. Tap to learn more.
+            </p>
+</div>
+<!-- Incoming Message Bubble -->
+<div class="flex flex-col items-start gap-1 max-w-[85%] animate-fade-in mb-4">
+<div class="relative bubble-incoming bg-whatsapp-incoming p-bubble-padding-v px-bubble-padding-h rounded-xl rounded-tl-none shadow-sm text-on-surface">
+<div class="w-full mb-3 overflow-hidden rounded-lg border border-outline-variant/20 bg-surface/50 p-1">
+<img alt="Global Rewards Point Balance Notification" class="w-full h-auto object-cover rounded" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsCRoY1-P8D0BR1gO6SKx27dqVF14lL2q9WBXaEGCaMlJmqCZyUIBVI5Wfz7QPF1N0wzQH2ExXSaGsMvsl3yUzROvyfrX-L5kOuH10cheTySejUiwnXy351pdpqdY5yy5meKhzsnM92E7LMmU8RTjherIJUyoZOD6Ds1wEhueYHSrBTBbor21BoZcrrhxf6vL1L6RHd2n6mFx_HW2cBgRSsmtaW3PsqLSsFrSNlxF3nka8ppF7bjU-jw">
+</div>
+<div class="font-body-md text-body-md mb-1 leading-snug">
+                    CONGRATULATIONS! You have 50,000 Global Rewards points expiring in 24 hours. Click the link below to claim your $500 gift card now: <a class="text-blue-600 underline font-medium break-all" href="#" id="scam-link">bit.ly/claim-rewards-now</a>
+</div>
+<div class="flex items-center justify-end gap-1">
+<span class="text-label-sm font-label-sm text-on-surface-variant opacity-70">09:41 AM</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Message Input Bar -->
+<footer class="fixed bottom-0 w-full z-40 bg-surface flex items-center gap-2 px-2 py-2">
+<div class="flex flex-1 items-center bg-surface-container-lowest rounded-full px-3 py-2 shadow-sm border border-outline-variant/20">
+<button class="material-symbols-outlined text-on-surface-variant p-1">sentiment_satisfied</button>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-body-md font-body-md px-2" id="chat-input" placeholder="Type a message" type="text">
+<button class="material-symbols-outlined text-on-surface-variant p-1 -rotate-45">attachment</button>
+<button class="material-symbols-outlined text-on-surface-variant p-1">photo_camera</button>
+</div>
+<button class="w-[48px] h-[48px] bg-primary text-on-primary rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-transform" id="send-btn">
+<span class="material-symbols-outlined" id="send-btn-icon" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+</footer>
+<script>
+        // Constants
+        const scamLink = document.getElementById('scam-link');
+        const linkWarningOverlay = document.getElementById('link-warning-overlay');
+        const closeLinkWarning = document.getElementById('close-link-warning');
+        
+        const replyWarningOverlay = document.getElementById('reply-warning-overlay');
+        const closeReplyWarning = document.getElementById('close-reply-warning');
+        
+        const chatInput = document.getElementById('chat-input');
+        const sendBtn = document.getElementById('send-btn');
+        const sendBtnIcon = document.getElementById('send-btn-icon');
+        const chatMessages = document.getElementById('chat-messages');
+
+        const menuTrigger = document.getElementById('menu-trigger');
+        const headerClickable = document.getElementById('header-clickable');
+        const menuBackdrop = document.getElementById('whatsapp-menu-backdrop');
+        const moreActionsTrigger = document.getElementById('more-actions-trigger');
+        const moreMenuBackdrop = document.getElementById('more-menu-backdrop');
+        
+        const reportBtn = document.getElementById('report-btn');
+        const blockBtn = document.getElementById('block-btn');
+        const reportSuccess = document.getElementById('report-success-overlay');
+        const blockSuccess = document.getElementById('block-success-overlay');
+        const closeReportSuccess = document.getElementById('close-report-success');
+        const closeBlockSuccess = document.getElementById('close-block-success');
+
+        const videoCallBtn = document.getElementById('video-call-btn');
+        const voiceCallBtn = document.getElementById('voice-call-btn');
+
+        // Warning Helper
+        const triggerReplyWarning = (e) => {
+            if(e) e.preventDefault();
+            replyWarningOverlay.classList.remove('hidden');
+        };
+
+        // Scam Link Warning
+        scamLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            linkWarningOverlay.classList.remove('hidden');
+        });
+
+        closeLinkWarning.addEventListener('click', () => {
+            linkWarningOverlay.classList.add('hidden');
+        });
+
+        // Header Interaction Warning
+        videoCallBtn.addEventListener('click', triggerReplyWarning);
+        voiceCallBtn.addEventListener('click', triggerReplyWarning);
+        closeReplyWarning.addEventListener('click', () => {
+            replyWarningOverlay.classList.add('hidden');
+        });
+
+        // Input Interaction Logic
+        chatInput.addEventListener('input', (e) => {
+            if (e.target.value.trim() !== '') {
+                sendBtnIcon.textContent = 'send';
+            } else {
+                sendBtnIcon.textContent = 'mic';
+            }
+        });
+
+        const sendMessage = () => {
+            const text = chatInput.value.trim();
+            if (!text) return;
+
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'flex flex-col items-end gap-1 max-w-[85%] self-end animate-slide-up mb-4';
+            msgDiv.innerHTML = `
+                <div class="relative bubble-outgoing bg-whatsapp-outgoing p-bubble-padding-v px-bubble-padding-h rounded-xl rounded-tr-none shadow-sm text-on-surface">
+                    <div class="font-body-md text-body-md mb-1 leading-snug">${text}</div>
+                    <div class="flex items-center justify-end gap-1">
+                        <span class="text-label-sm font-label-sm text-on-surface-variant opacity-70">${timeStr}</span>
+                        <span class="material-symbols-outlined text-[16px] text-blue-500">done_all</span>
+                    </div>
+                </div>
+            `;
+
+            chatMessages.appendChild(msgDiv);
+            chatInput.value = '';
+            sendBtnIcon.textContent = 'mic';
+            
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            setTimeout(() => {
+                triggerReplyWarning();
+            }, 800);
+        };
+
+        sendBtn.addEventListener('click', () => {
+            if (sendBtnIcon.textContent === 'send') {
+                sendMessage();
+            } else {
+                triggerReplyWarning();
+            }
+        });
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Menu logic
+        const openMenu = () => {
+            menuBackdrop.classList.remove('hidden');
+        };
+
+        const closeAllMenus = () => {
+            menuBackdrop.classList.add('hidden');
+            moreMenuBackdrop.classList.add('hidden');
+        };
+
+        menuTrigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openMenu();
+        });
+        
+        headerClickable.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openMenu();
+        });
+        
+        menuBackdrop.addEventListener('click', (e) => {
+            closeAllMenus();
+        });
+
+        moreActionsTrigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menuBackdrop.classList.add('hidden');
+            moreMenuBackdrop.classList.remove('hidden');
+        });
+
+        moreMenuBackdrop.addEventListener('click', (e) => {
+            closeAllMenus();
+        });
+
+        reportBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeAllMenus();
+            reportSuccess.classList.remove('hidden');
+        });
+
+        blockBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeAllMenus();
+            blockSuccess.classList.remove('hidden');
+        });
+
+        closeReportSuccess.addEventListener('click', () => reportSuccess.classList.add('hidden'));
+        closeBlockSuccess.addEventListener('click', () => blockSuccess.classList.add('hidden'));
+
+        // Scroll to bottom on load
+        window.addEventListener('load', () => {
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        });
+    </script>
+</body></html>

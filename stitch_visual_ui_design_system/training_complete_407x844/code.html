@@ -1,0 +1,286 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Training Complete - SafeChat Academy</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "inverse-primary": "#7fda8f",
+                "on-error-container": "#93000a",
+                "on-surface-variant": "#3f493f",
+                "on-tertiary": "#ffffff",
+                "tertiary-container": "#4d653e",
+                "surface-container-low": "#faf2ea",
+                "on-primary": "#ffffff",
+                "primary": "#005222",
+                "on-secondary-fixed-variant": "#005048",
+                "surface-bright": "#fff8f2",
+                "surface-dim": "#e0d9d1",
+                "primary-fixed-dim": "#7fda8f",
+                "on-secondary": "#ffffff",
+                "on-primary-fixed": "#002109",
+                "surface-container-lowest": "#ffffff",
+                "surface-variant": "#e9e1d9",
+                "on-background": "#1e1b16",
+                "error": "#ba1a1a",
+                "primary-fixed": "#9bf7a9",
+                "outline-variant": "#bbcbb9",
+                "on-primary-fixed-variant": "#005322",
+                "inverse-on-surface": "#f7efe7",
+                "on-surface": "#1e1b16",
+                "surface-container-high": "#efe7de",
+                "background": "#fff8f2",
+                "secondary-fixed-dim": "#8dd4c7",
+                "secondary-container": "#a5ede0",
+                "on-primary-container": "#90ec9f",
+                "on-secondary-container": "#226e64",
+                "on-tertiary-fixed-variant": "#364d28",
+                "surface-container": "#f5ede4",
+                "secondary": "#1c695f",
+                "surface-tint": "#016d2f",
+                "tertiary-fixed-dim": "#b3cf9f",
+                "on-secondary-fixed": "#00201c",
+                "on-tertiary-container": "#c5e1b0",
+                "tertiary-fixed": "#cfebba",
+                "inverse-surface": "#33302a",
+                "whatsapp-incoming": "#DCF8C6",
+                "surface": "#fff8f2",
+                "success-container": "#25d366",
+                "error-container": "#ffdad6",
+                "tertiary": "#364d28",
+                "primary-container": "#006d2f",
+                "outline": "#6f7a6e",
+                "whatsapp-bg": "#E5DDD5",
+                "on-error": "#ffffff",
+                "secondary-fixed": "#a8f0e3",
+                "surface-container-highest": "#e9e1d9",
+                "whatsapp-outgoing": "#ffffff",
+                "on-tertiary-fixed": "#0c2003"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "stack-sm": "0.25rem",
+                "page-margin": "1rem",
+                "bubble-padding-h": "0.75rem",
+                "header-height": "56px",
+                "bubble-padding-v": "0.5rem",
+                "stack-md": "1rem"
+            },
+            "fontFamily": {
+                "headline-lg": ["Inter"],
+                "body-lg": ["Inter"],
+                "label-md": ["Inter"],
+                "body-md": ["Inter"],
+                "label-sm": ["Inter"],
+                "headline-md-mobile": ["Inter"],
+                "headline-md": ["Inter"]
+            },
+            "fontSize": {
+                "headline-lg": ["22px", {"lineHeight": "28px", "fontWeight": "700"}],
+                "body-lg": ["17px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "label-md": ["13px", {"lineHeight": "16px", "fontWeight": "500"}],
+                "body-md": ["16px", {"lineHeight": "22px", "fontWeight": "400"}],
+                "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "400"}],
+                "headline-md-mobile": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #25d366;
+            opacity: 0;
+            top: -10px;
+            animation: fall 3s linear infinite;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 1;
+            }
+        }
+        .whatsapp-pattern {
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+            opacity: 0.05;
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at center, #9bf7a9 0%, transparent 70%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-whatsapp-bg w-[407px] h-[844px] mx-auto relative overflow-x-hidden flex flex-col font-body-md text-on-surface selection:bg-primary-fixed" data-mode="connect" style="min-height: 844px;">
+<!-- Top AppBar (from JSON) -->
+<header class="bg-surface dark:bg-surface-dim absolute top-0 w-full h-header-height z-50 border-b border-outline-variant dark:border-outline shadow-sm">
+<div class="flex items-center justify-between px-page-margin max-w-screen-xl mx-auto h-full">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" style="font-variation-settings: &quot;FILL&quot; 1;">security</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">SafeChat Academy</h1>
+</div>
+<button class="text-primary dark:text-primary-fixed-dim font-label-md text-label-md hover:bg-surface-container-high transition-colors px-3 py-1 rounded-full">Help</button>
+</div>
+</header>
+<main class="flex-grow pt-[56px] relative overflow-hidden flex-1 overflow-y-auto">
+<!-- Ambient Animation Overlay -->
+<div class="absolute inset-0 pointer-events-none z-0">
+<div id="confetti-container"><div class="confetti" style="left: 33.293168vw; animation-delay: 2.870256s; background-color: rgb(155, 247, 169); width: 11.397716px; height: 11.397716px;"></div><div class="confetti" style="left: 90.631721vw; animation-delay: 1.587355s; background-color: rgb(255, 255, 255); width: 10.844966px; height: 10.844966px;"></div><div class="confetti" style="left: 98.366874vw; animation-delay: 1.661422s; background-color: rgb(37, 211, 102); width: 10.411053px; height: 10.411053px;"></div><div class="confetti" style="left: 42.261713vw; animation-delay: 2.412191s; background-color: rgb(255, 255, 255); width: 5.663846px; height: 5.663846px;"></div><div class="confetti" style="left: 2.360354vw; animation-delay: 2.694679s; background-color: rgb(155, 247, 169); width: 7.935048px; height: 7.935048px;"></div><div class="confetti" style="left: 90.615231vw; animation-delay: 0.089053s; background-color: rgb(37, 211, 102); width: 7.838329px; height: 7.838329px;"></div><div class="confetti" style="left: 50.657853vw; animation-delay: 0.704614s; background-color: rgb(155, 247, 169); width: 7.633951px; height: 7.633951px;"></div><div class="confetti" style="left: 70.398397vw; animation-delay: 1.902616s; background-color: rgb(37, 211, 102); width: 8.879399px; height: 8.879399px;"></div><div class="confetti" style="left: 98.439005vw; animation-delay: 1.923732s; background-color: rgb(155, 247, 169); width: 10.116982px; height: 10.116982px;"></div><div class="confetti" style="left: 77.608542vw; animation-delay: 2.062004s; background-color: rgb(0, 82, 34); width: 9.662981px; height: 9.662981px;"></div><div class="confetti" style="left: 47.413954vw; animation-delay: 0.48719s; background-color: rgb(255, 255, 255); width: 8.272805px; height: 8.272805px;"></div><div class="confetti" style="left: 46.640903vw; animation-delay: 1.758222s; background-color: rgb(0, 82, 34); width: 10.946424px; height: 10.946424px;"></div><div class="confetti" style="left: 98.287527vw; animation-delay: 0.519354s; background-color: rgb(155, 247, 169); width: 5.933835px; height: 5.933835px;"></div><div class="confetti" style="left: 94.562807vw; animation-delay: 1.880334s; background-color: rgb(155, 247, 169); width: 9.496891px; height: 9.496891px;"></div><div class="confetti" style="left: 18.051012vw; animation-delay: 2.946295s; background-color: rgb(37, 211, 102); width: 9.488512px; height: 9.488512px;"></div><div class="confetti" style="left: 67.614965vw; animation-delay: 0.673001s; background-color: rgb(37, 211, 102); width: 11.81498px; height: 11.81498px;"></div><div class="confetti" style="left: 64.369723vw; animation-delay: 0.064792s; background-color: rgb(155, 247, 169); width: 9.021309px; height: 9.021309px;"></div><div class="confetti" style="left: 3.733504vw; animation-delay: 1.17961s; background-color: rgb(0, 82, 34); width: 7.25652px; height: 7.25652px;"></div><div class="confetti" style="left: 34.881838vw; animation-delay: 0.501754s; background-color: rgb(0, 82, 34); width: 11.805307px; height: 11.805307px;"></div><div class="confetti" style="left: 9.527419vw; animation-delay: 0.499025s; background-color: rgb(37, 211, 102); width: 9.629314px; height: 9.629314px;"></div><div class="confetti" style="left: 0.845356vw; animation-delay: 0.108106s; background-color: rgb(0, 82, 34); width: 11.231648px; height: 11.231648px;"></div><div class="confetti" style="left: 57.664453vw; animation-delay: 1.922822s; background-color: rgb(37, 211, 102); width: 7.579419px; height: 7.579419px;"></div><div class="confetti" style="left: 64.416485vw; animation-delay: 1.123306s; background-color: rgb(0, 82, 34); width: 5.174497px; height: 5.174497px;"></div><div class="confetti" style="left: 41.516327vw; animation-delay: 1.4909s; background-color: rgb(37, 211, 102); width: 9.340584px; height: 9.340584px;"></div><div class="confetti" style="left: 53.442928vw; animation-delay: 2.057474s; background-color: rgb(37, 211, 102); width: 6.922818px; height: 6.922818px;"></div><div class="confetti" style="left: 89.819625vw; animation-delay: 2.58296s; background-color: rgb(37, 211, 102); width: 11.12601px; height: 11.12601px;"></div><div class="confetti" style="left: 90.199759vw; animation-delay: 1.874136s; background-color: rgb(255, 255, 255); width: 5.436897px; height: 5.436897px;"></div><div class="confetti" style="left: 63.448078vw; animation-delay: 0.884996s; background-color: rgb(155, 247, 169); width: 6.509749px; height: 6.509749px;"></div><div class="confetti" style="left: 7.263767vw; animation-delay: 1.839507s; background-color: rgb(255, 255, 255); width: 5.073338px; height: 5.073338px;"></div><div class="confetti" style="left: 68.96171vw; animation-delay: 0.709148s; background-color: rgb(255, 255, 255); width: 5.445309px; height: 5.445309px;"></div><div class="confetti" style="left: 86.284107vw; animation-delay: 0.251329s; background-color: rgb(155, 247, 169); width: 10.786478px; height: 10.786478px;"></div><div class="confetti" style="left: 45.149464vw; animation-delay: 2.762093s; background-color: rgb(255, 255, 255); width: 5.691972px; height: 5.691972px;"></div><div class="confetti" style="left: 51.178947vw; animation-delay: 0.348417s; background-color: rgb(0, 82, 34); width: 11.936085px; height: 11.936085px;"></div><div class="confetti" style="left: 70.452758vw; animation-delay: 2.309169s; background-color: rgb(155, 247, 169); width: 10.476816px; height: 10.476816px;"></div><div class="confetti" style="left: 34.194576vw; animation-delay: 1.915027s; background-color: rgb(155, 247, 169); width: 7.707535px; height: 7.707535px;"></div><div class="confetti" style="left: 20.823151vw; animation-delay: 2.496478s; background-color: rgb(37, 211, 102); width: 11.601895px; height: 11.601895px;"></div><div class="confetti" style="left: 91.393026vw; animation-delay: 1.63614s; background-color: rgb(255, 255, 255); width: 11.637867px; height: 11.637867px;"></div><div class="confetti" style="left: 44.281292vw; animation-delay: 1.488173s; background-color: rgb(37, 211, 102); width: 6.879956px; height: 6.879956px;"></div><div class="confetti" style="left: 18.154104vw; animation-delay: 2.105079s; background-color: rgb(0, 82, 34); width: 9.897745px; height: 9.897745px;"></div><div class="confetti" style="left: 85.601604vw; animation-delay: 1.741241s; background-color: rgb(155, 247, 169); width: 4.518231px; height: 4.518231px;"></div><div class="confetti" style="left: 82.627536vw; animation-delay: 2.320469s; background-color: rgb(0, 82, 34); width: 5.5448px; height: 5.5448px;"></div><div class="confetti" style="left: 42.646877vw; animation-delay: 1.273054s; background-color: rgb(0, 82, 34); width: 8.628544px; height: 8.628544px;"></div><div class="confetti" style="left: 36.755214vw; animation-delay: 2.813616s; background-color: rgb(255, 255, 255); width: 7.987965px; height: 7.987965px;"></div><div class="confetti" style="left: 59.02735vw; animation-delay: 2.217078s; background-color: rgb(37, 211, 102); width: 5.691291px; height: 5.691291px;"></div><div class="confetti" style="left: 36.987199vw; animation-delay: 0.489206s; background-color: rgb(255, 255, 255); width: 11.973709px; height: 11.973709px;"></div><div class="confetti" style="left: 58.673496vw; animation-delay: 2.420736s; background-color: rgb(0, 82, 34); width: 10.569181px; height: 10.569181px;"></div><div class="confetti" style="left: 12.548526vw; animation-delay: 2.04049s; background-color: rgb(0, 82, 34); width: 5.362267px; height: 5.362267px;"></div><div class="confetti" style="left: 13.268488vw; animation-delay: 1.293289s; background-color: rgb(155, 247, 169); width: 7.549354px; height: 7.549354px;"></div><div class="confetti" style="left: 94.442449vw; animation-delay: 1.600497s; background-color: rgb(0, 82, 34); width: 6.546853px; height: 6.546853px;"></div><div class="confetti" style="left: 54.127781vw; animation-delay: 1.654938s; background-color: rgb(0, 82, 34); width: 5.313249px; height: 5.313249px;"></div><div class="confetti" style="left: 49.477142vw; animation-delay: 0.473328s; background-color: rgb(0, 82, 34); width: 6.378767px; height: 6.378767px;"></div><div class="confetti" style="left: 58.156463vw; animation-delay: 0.489236s; background-color: rgb(255, 255, 255); width: 8.804279px; height: 8.804279px;"></div><div class="confetti" style="left: 75.003159vw; animation-delay: 1.429672s; background-color: rgb(255, 255, 255); width: 7.55873px; height: 7.55873px;"></div><div class="confetti" style="left: 33.003417vw; animation-delay: 1.564647s; background-color: rgb(255, 255, 255); width: 10.304537px; height: 10.304537px;"></div><div class="confetti" style="left: 15.246794vw; animation-delay: 0.104654s; background-color: rgb(37, 211, 102); width: 4.855989px; height: 4.855989px;"></div><div class="confetti" style="left: 86.489676vw; animation-delay: 2.325921s; background-color: rgb(37, 211, 102); width: 4.767994px; height: 4.767994px;"></div><div class="confetti" style="left: 63.466195vw; animation-delay: 1.759319s; background-color: rgb(0, 82, 34); width: 9.242629px; height: 9.242629px;"></div><div class="confetti" style="left: 22.417102vw; animation-delay: 2.490216s; background-color: rgb(155, 247, 169); width: 5.233602px; height: 5.233602px;"></div><div class="confetti" style="left: 49.459272vw; animation-delay: 0.480611s; background-color: rgb(37, 211, 102); width: 9.961889px; height: 9.961889px;"></div><div class="confetti" style="left: 2.019222vw; animation-delay: 1.271769s; background-color: rgb(37, 211, 102); width: 11.764669px; height: 11.764669px;"></div><div class="confetti" style="left: 16.000699vw; animation-delay: 1.441s; background-color: rgb(0, 82, 34); width: 4.10326px; height: 4.10326px;"></div><div class="confetti" style="left: 7.115919vw; animation-delay: 2.451052s; background-color: rgb(0, 82, 34); width: 9.708366px; height: 9.708366px;"></div><div class="confetti" style="left: 56.879396vw; animation-delay: 2.849412s; background-color: rgb(155, 247, 169); width: 4.358919px; height: 4.358919px;"></div><div class="confetti" style="left: 84.031112vw; animation-delay: 1.491381s; background-color: rgb(37, 211, 102); width: 6.109085px; height: 6.109085px;"></div><div class="confetti" style="left: 4.641208vw; animation-delay: 2.846515s; background-color: rgb(255, 255, 255); width: 4.581457px; height: 4.581457px;"></div><div class="confetti" style="left: 54.28236vw; animation-delay: 0.734218s; background-color: rgb(0, 82, 34); width: 7.508409px; height: 7.508409px;"></div><div class="confetti" style="left: 2.411189vw; animation-delay: 1.906083s; background-color: rgb(255, 255, 255); width: 8.181087px; height: 8.181087px;"></div><div class="confetti" style="left: 88.544493vw; animation-delay: 0.458881s; background-color: rgb(155, 247, 169); width: 9.341481px; height: 9.341481px;"></div><div class="confetti" style="left: 73.513083vw; animation-delay: 1.641395s; background-color: rgb(0, 82, 34); width: 7.252173px; height: 7.252173px;"></div><div class="confetti" style="left: 27.036348vw; animation-delay: 1.40325s; background-color: rgb(255, 255, 255); width: 8.065308px; height: 8.065308px;"></div><div class="confetti" style="left: 64.886039vw; animation-delay: 2.668849s; background-color: rgb(155, 247, 169); width: 9.522577px; height: 9.522577px;"></div><div class="confetti" style="left: 7.370819vw; animation-delay: 1.033861s; background-color: rgb(0, 82, 34); width: 4.95564px; height: 4.95564px;"></div><div class="confetti" style="left: 19.841031vw; animation-delay: 2.015759s; background-color: rgb(155, 247, 169); width: 7.757822px; height: 7.757822px;"></div><div class="confetti" style="left: 15.875445vw; animation-delay: 0.990165s; background-color: rgb(255, 255, 255); width: 5.84674px; height: 5.84674px;"></div><div class="confetti" style="left: 72.48723vw; animation-delay: 2.839792s; background-color: rgb(155, 247, 169); width: 11.803383px; height: 11.803383px;"></div><div class="confetti" style="left: 51.241647vw; animation-delay: 0.538846s; background-color: rgb(155, 247, 169); width: 4.93528px; height: 4.93528px;"></div><div class="confetti" style="left: 72.412866vw; animation-delay: 1.901524s; background-color: rgb(37, 211, 102); width: 4.40034px; height: 4.40034px;"></div><div class="confetti" style="left: 92.819086vw; animation-delay: 0.771868s; background-color: rgb(37, 211, 102); width: 11.749962px; height: 11.749962px;"></div><div class="confetti" style="left: 55.997767vw; animation-delay: 2.85308s; background-color: rgb(155, 247, 169); width: 4.988252px; height: 4.988252px;"></div><div class="confetti" style="left: 74.257685vw; animation-delay: 1.447624s; background-color: rgb(155, 247, 169); width: 4.073022px; height: 4.073022px;"></div><div class="confetti" style="left: 91.240089vw; animation-delay: 1.610696s; background-color: rgb(37, 211, 102); width: 9.349813px; height: 9.349813px;"></div><div class="confetti" style="left: 40.782746vw; animation-delay: 0.338936s; background-color: rgb(155, 247, 169); width: 9.472711px; height: 9.472711px;"></div><div class="confetti" style="left: 17.825373vw; animation-delay: 1.707823s; background-color: rgb(255, 255, 255); width: 4.371362px; height: 4.371362px;"></div><div class="confetti" style="left: 48.527726vw; animation-delay: 2.394877s; background-color: rgb(255, 255, 255); width: 6.839839px; height: 6.839839px;"></div><div class="confetti" style="left: 90.95328vw; animation-delay: 2.985309s; background-color: rgb(255, 255, 255); width: 5.253291px; height: 5.253291px;"></div><div class="confetti" style="left: 19.577155vw; animation-delay: 1.630218s; background-color: rgb(155, 247, 169); width: 6.681525px; height: 6.681525px;"></div><div class="confetti" style="left: 42.53751vw; animation-delay: 0.011643s; background-color: rgb(155, 247, 169); width: 4.351873px; height: 4.351873px;"></div><div class="confetti" style="left: 80.883439vw; animation-delay: 1.881792s; background-color: rgb(255, 255, 255); width: 5.773595px; height: 5.773595px;"></div><div class="confetti" style="left: 59.326492vw; animation-delay: 1.475668s; background-color: rgb(37, 211, 102); width: 10.438514px; height: 10.438514px;"></div><div class="confetti" style="left: 64.505783vw; animation-delay: 2.340732s; background-color: rgb(0, 82, 34); width: 8.768223px; height: 8.768223px;"></div><div class="confetti" style="left: 26.249851vw; animation-delay: 1.344595s; background-color: rgb(37, 211, 102); width: 7.510502px; height: 7.510502px;"></div><div class="confetti" style="left: 16.11102vw; animation-delay: 2.029265s; background-color: rgb(0, 82, 34); width: 7.617885px; height: 7.617885px;"></div><div class="confetti" style="left: 77.153311vw; animation-delay: 2.891304s; background-color: rgb(0, 82, 34); width: 11.004029px; height: 11.004029px;"></div><div class="confetti" style="left: 23.667648vw; animation-delay: 0.226566s; background-color: rgb(155, 247, 169); width: 4.987756px; height: 4.987756px;"></div><div class="confetti" style="left: 52.988279vw; animation-delay: 1.946959s; background-color: rgb(37, 211, 102); width: 11.597201px; height: 11.597201px;"></div><div class="confetti" style="left: 20.740112vw; animation-delay: 0.787426s; background-color: rgb(0, 82, 34); width: 9.018823px; height: 9.018823px;"></div><div class="confetti" style="left: 97.192578vw; animation-delay: 2.906337s; background-color: rgb(255, 255, 255); width: 8.386222px; height: 8.386222px;"></div><div class="confetti" style="left: 89.609208vw; animation-delay: 0.048901s; background-color: rgb(255, 255, 255); width: 5.586114px; height: 5.586114px;"></div><div class="confetti" style="left: 67.253837vw; animation-delay: 2.712063s; background-color: rgb(37, 211, 102); width: 11.397416px; height: 11.397416px;"></div><div class="confetti" style="left: 43.367846vw; animation-delay: 1.195373s; background-color: rgb(37, 211, 102); width: 10.296486px; height: 10.296486px;"></div><div class="confetti" style="left: 21.362137vw; animation-delay: 1.167923s; background-color: rgb(37, 211, 102); width: 10.769699px; height: 10.769699px;"></div><div class="confetti" style="left: 28.979134vw; animation-delay: 1.789922s; background-color: rgb(37, 211, 102); width: 10.207546px; height: 10.207546px;"></div><div class="confetti" style="left: 67.475895vw; animation-delay: 0.473315s; background-color: rgb(0, 82, 34); width: 11.668989px; height: 11.668989px;"></div><div class="confetti" style="left: 63.57886vw; animation-delay: 1.619751s; background-color: rgb(155, 247, 169); width: 9.351769px; height: 9.351769px;"></div><div class="confetti" style="left: 32.370535vw; animation-delay: 2.281878s; background-color: rgb(155, 247, 169); width: 5.582465px; height: 5.582465px;"></div><div class="confetti" style="left: 69.600946vw; animation-delay: 1.681489s; background-color: rgb(0, 82, 34); width: 9.606274px; height: 9.606274px;"></div><div class="confetti" style="left: 51.921439vw; animation-delay: 2.933818s; background-color: rgb(155, 247, 169); width: 10.929715px; height: 10.929715px;"></div><div class="confetti" style="left: 78.896033vw; animation-delay: 2.70338s; background-color: rgb(37, 211, 102); width: 5.486252px; height: 5.486252px;"></div><div class="confetti" style="left: 52.108978vw; animation-delay: 1.900833s; background-color: rgb(37, 211, 102); width: 4.074234px; height: 4.074234px;"></div><div class="confetti" style="left: 47.73254vw; animation-delay: 0.591131s; background-color: rgb(155, 247, 169); width: 4.606873px; height: 4.606873px;"></div><div class="confetti" style="left: 53.936282vw; animation-delay: 0.404874s; background-color: rgb(255, 255, 255); width: 6.213571px; height: 6.213571px;"></div><div class="confetti" style="left: 11.603922vw; animation-delay: 0.020622s; background-color: rgb(0, 82, 34); width: 7.085762px; height: 7.085762px;"></div><div class="confetti" style="left: 77.09777vw; animation-delay: 0.359017s; background-color: rgb(155, 247, 169); width: 8.180849px; height: 8.180849px;"></div><div class="confetti" style="left: 89.223199vw; animation-delay: 0.560201s; background-color: rgb(155, 247, 169); width: 11.289086px; height: 11.289086px;"></div><div class="confetti" style="left: 49.643079vw; animation-delay: 1.997039s; background-color: rgb(0, 82, 34); width: 11.090146px; height: 11.090146px;"></div><div class="confetti" style="left: 63.674549vw; animation-delay: 1.700731s; background-color: rgb(37, 211, 102); width: 6.348872px; height: 6.348872px;"></div><div class="confetti" style="left: 52.111444vw; animation-delay: 1.606571s; background-color: rgb(37, 211, 102); width: 4.689815px; height: 4.689815px;"></div><div class="confetti" style="left: 52.833179vw; animation-delay: 0.377417s; background-color: rgb(37, 211, 102); width: 4.682003px; height: 4.682003px;"></div><div class="confetti" style="left: 29.548044vw; animation-delay: 0.195612s; background-color: rgb(0, 82, 34); width: 9.593207px; height: 9.593207px;"></div><div class="confetti" style="left: 72.571817vw; animation-delay: 1.412229s; background-color: rgb(0, 82, 34); width: 9.520084px; height: 9.520084px;"></div><div class="confetti" style="left: 39.029175vw; animation-delay: 1.644252s; background-color: rgb(155, 247, 169); width: 11.909713px; height: 11.909713px;"></div><div class="confetti" style="left: 79.240105vw; animation-delay: 2.969036s; background-color: rgb(0, 82, 34); width: 8.144904px; height: 8.144904px;"></div><div class="confetti" style="left: 4.046181vw; animation-delay: 1.075296s; background-color: rgb(0, 82, 34); width: 11.242438px; height: 11.242438px;"></div><div class="confetti" style="left: 63.552303vw; animation-delay: 1.319041s; background-color: rgb(0, 82, 34); width: 4.064238px; height: 4.064238px;"></div><div class="confetti" style="left: 6.505562vw; animation-delay: 1.356763s; background-color: rgb(37, 211, 102); width: 6.405353px; height: 6.405353px;"></div><div class="confetti" style="left: 1.715071vw; animation-delay: 2.738981s; background-color: rgb(0, 82, 34); width: 5.108908px; height: 5.108908px;"></div><div class="confetti" style="left: 79.252446vw; animation-delay: 1.174487s; background-color: rgb(255, 255, 255); width: 10.680971px; height: 10.680971px;"></div><div class="confetti" style="left: 34.810785vw; animation-delay: 2.583188s; background-color: rgb(255, 255, 255); width: 11.404545px; height: 11.404545px;"></div><div class="confetti" style="left: 98.367131vw; animation-delay: 0.005307s; background-color: rgb(255, 255, 255); width: 11.847052px; height: 11.847052px;"></div><div class="confetti" style="left: 17.103566vw; animation-delay: 1.488367s; background-color: rgb(37, 211, 102); width: 5.584732px; height: 5.584732px;"></div><div class="confetti" style="left: 17.880553vw; animation-delay: 0.426874s; background-color: rgb(0, 82, 34); width: 11.291252px; height: 11.291252px;"></div><div class="confetti" style="left: 77.260069vw; animation-delay: 1.481507s; background-color: rgb(0, 82, 34); width: 7.814982px; height: 7.814982px;"></div><div class="confetti" style="left: 77.432637vw; animation-delay: 0.774462s; background-color: rgb(37, 211, 102); width: 6.49874px; height: 6.49874px;"></div><div class="confetti" style="left: 57.405616vw; animation-delay: 0.476373s; background-color: rgb(155, 247, 169); width: 8.298457px; height: 8.298457px;"></div><div class="confetti" style="left: 32.584935vw; animation-delay: 0.634684s; background-color: rgb(0, 82, 34); width: 6.228342px; height: 6.228342px;"></div><div class="confetti" style="left: 21.706058vw; animation-delay: 2.14519s; background-color: rgb(155, 247, 169); width: 5.20259px; height: 5.20259px;"></div><div class="confetti" style="left: 96.210147vw; animation-delay: 0.429488s; background-color: rgb(37, 211, 102); width: 7.193658px; height: 7.193658px;"></div><div class="confetti" style="left: 77.219177vw; animation-delay: 1.096022s; background-color: rgb(0, 82, 34); width: 5.077642px; height: 5.077642px;"></div><div class="confetti" style="left: 75.265119vw; animation-delay: 1.194535s; background-color: rgb(255, 255, 255); width: 8.322834px; height: 8.322834px;"></div><div class="confetti" style="left: 49.726462vw; animation-delay: 1.846012s; background-color: rgb(37, 211, 102); width: 5.728663px; height: 5.728663px;"></div><div class="confetti" style="left: 34.261135vw; animation-delay: 2.056831s; background-color: rgb(155, 247, 169); width: 5.334408px; height: 5.334408px;"></div><div class="confetti" style="left: 15.739728vw; animation-delay: 1.14298s; background-color: rgb(0, 82, 34); width: 5.681677px; height: 5.681677px;"></div><div class="confetti" style="left: 80.432323vw; animation-delay: 2.457012s; background-color: rgb(255, 255, 255); width: 7.305034px; height: 7.305034px;"></div><div class="confetti" style="left: 1.970134vw; animation-delay: 2.871146s; background-color: rgb(37, 211, 102); width: 10.689906px; height: 10.689906px;"></div><div class="confetti" style="left: 33.563006vw; animation-delay: 0.422218s; background-color: rgb(255, 255, 255); width: 7.28647px; height: 7.28647px;"></div><div class="confetti" style="left: 12.176176vw; animation-delay: 2.672456s; background-color: rgb(255, 255, 255); width: 9.860201px; height: 9.860201px;"></div><div class="confetti" style="left: 97.180687vw; animation-delay: 0.935766s; background-color: rgb(155, 247, 169); width: 8.783703px; height: 8.783703px;"></div><div class="confetti" style="left: 77.214265vw; animation-delay: 1.93203s; background-color: rgb(255, 255, 255); width: 9.031878px; height: 9.031878px;"></div><div class="confetti" style="left: 38.793904vw; animation-delay: 2.486029s; background-color: rgb(255, 255, 255); width: 10.266753px; height: 10.266753px;"></div><div class="confetti" style="left: 84.321907vw; animation-delay: 2.879704s; background-color: rgb(255, 255, 255); width: 11.529968px; height: 11.529968px;"></div><div class="confetti" style="left: 41.964328vw; animation-delay: 2.543733s; background-color: rgb(0, 82, 34); width: 8.978738px; height: 8.978738px;"></div><div class="confetti" style="left: 44.563641vw; animation-delay: 0.784946s; background-color: rgb(37, 211, 102); width: 4.636589px; height: 4.636589px;"></div><div class="confetti" style="left: 81.391482vw; animation-delay: 0.654317s; background-color: rgb(255, 255, 255); width: 8.347898px; height: 8.347898px;"></div><div class="confetti" style="left: 53.665238vw; animation-delay: 1.368389s; background-color: rgb(0, 82, 34); width: 11.180118px; height: 11.180118px;"></div><div class="confetti" style="left: 99.688007vw; animation-delay: 0.54244s; background-color: rgb(155, 247, 169); width: 4.433475px; height: 4.433475px;"></div><div class="confetti" style="left: 64.556359vw; animation-delay: 0.54862s; background-color: rgb(0, 82, 34); width: 10.942328px; height: 10.942328px;"></div><div class="confetti" style="left: 4.53713vw; animation-delay: 1.615658s; background-color: rgb(155, 247, 169); width: 8.355411px; height: 8.355411px;"></div><div class="confetti" style="left: 24.053274vw; animation-delay: 2.224608s; background-color: rgb(37, 211, 102); width: 7.572658px; height: 7.572658px;"></div><div class="confetti" style="left: 62.158317vw; animation-delay: 2.485992s; background-color: rgb(255, 255, 255); width: 8.416993px; height: 8.416993px;"></div><div class="confetti" style="left: 81.132877vw; animation-delay: 0.690158s; background-color: rgb(0, 82, 34); width: 9.295701px; height: 9.295701px;"></div><div class="confetti" style="left: 56.761196vw; animation-delay: 2.890497s; background-color: rgb(37, 211, 102); width: 6.417303px; height: 6.417303px;"></div><div class="confetti" style="left: 25.746569vw; animation-delay: 2.160253s; background-color: rgb(155, 247, 169); width: 7.114819px; height: 7.114819px;"></div><div class="confetti" style="left: 37.233296vw; animation-delay: 1.734231s; background-color: rgb(0, 82, 34); width: 8.599968px; height: 8.599968px;"></div><div class="confetti" style="left: 48.094901vw; animation-delay: 0.086417s; background-color: rgb(255, 255, 255); width: 5.055844px; height: 5.055844px;"></div><div class="confetti" style="left: 59.764023vw; animation-delay: 1.428777s; background-color: rgb(37, 211, 102); width: 7.467818px; height: 7.467818px;"></div><div class="confetti" style="left: 22.249035vw; animation-delay: 0.55366s; background-color: rgb(37, 211, 102); width: 7.364135px; height: 7.364135px;"></div><div class="confetti" style="left: 42.533757vw; animation-delay: 2.563139s; background-color: rgb(37, 211, 102); width: 6.576213px; height: 6.576213px;"></div><div class="confetti" style="left: 33.629601vw; animation-delay: 1.777769s; background-color: rgb(155, 247, 169); width: 5.032309px; height: 5.032309px;"></div><div class="confetti" style="left: 3.985211vw; animation-delay: 2.332781s; background-color: rgb(255, 255, 255); width: 9.157118px; height: 9.157118px;"></div><div class="confetti" style="left: 27.350763vw; animation-delay: 0.201621s; background-color: rgb(0, 82, 34); width: 8.022615px; height: 8.022615px;"></div><div class="confetti" style="left: 72.248485vw; animation-delay: 2.658266s; background-color: rgb(37, 211, 102); width: 11.582801px; height: 11.582801px;"></div><div class="confetti" style="left: 9.409564vw; animation-delay: 0.989331s; background-color: rgb(155, 247, 169); width: 6.922307px; height: 6.922307px;"></div><div class="confetti" style="left: 16.069383vw; animation-delay: 0.787916s; background-color: rgb(155, 247, 169); width: 11.326238px; height: 11.326238px;"></div><div class="confetti" style="left: 67.52543vw; animation-delay: 2.884491s; background-color: rgb(155, 247, 169); width: 8.614776px; height: 8.614776px;"></div><div class="confetti" style="left: 18.505315vw; animation-delay: 1.284258s; background-color: rgb(155, 247, 169); width: 5.659298px; height: 5.659298px;"></div><div class="confetti" style="left: 58.431139vw; animation-delay: 1.704561s; background-color: rgb(155, 247, 169); width: 6.766821px; height: 6.766821px;"></div><div class="confetti" style="left: 92.164466vw; animation-delay: 2.793836s; background-color: rgb(37, 211, 102); width: 9.249706px; height: 9.249706px;"></div><div class="confetti" style="left: 25.176698vw; animation-delay: 1.811771s; background-color: rgb(255, 255, 255); width: 11.609098px; height: 11.609098px;"></div><div class="confetti" style="left: 33.953008vw; animation-delay: 2.445346s; background-color: rgb(155, 247, 169); width: 9.77583px; height: 9.77583px;"></div><div class="confetti" style="left: 59.378559vw; animation-delay: 2.748294s; background-color: rgb(37, 211, 102); width: 5.04113px; height: 5.04113px;"></div><div class="confetti" style="left: 9.075524vw; animation-delay: 0.964248s; background-color: rgb(0, 82, 34); width: 10.957528px; height: 10.957528px;"></div><div class="confetti" style="left: 18.578685vw; animation-delay: 0.356927s; background-color: rgb(255, 255, 255); width: 7.754071px; height: 7.754071px;"></div><div class="confetti" style="left: 45.625925vw; animation-delay: 0.52995s; background-color: rgb(155, 247, 169); width: 10.934994px; height: 10.934994px;"></div><div class="confetti" style="left: 6.787503vw; animation-delay: 0.351407s; background-color: rgb(37, 211, 102); width: 8.203897px; height: 8.203897px;"></div><div class="confetti" style="left: 74.960009vw; animation-delay: 0.563751s; background-color: rgb(255, 255, 255); width: 7.129501px; height: 7.129501px;"></div><div class="confetti" style="left: 22.659519vw; animation-delay: 0.802917s; background-color: rgb(0, 82, 34); width: 10.618122px; height: 10.618122px;"></div><div class="confetti" style="left: 12.592868vw; animation-delay: 1.447337s; background-color: rgb(155, 247, 169); width: 6.410193px; height: 6.410193px;"></div><div class="confetti" style="left: 95.474895vw; animation-delay: 0.528986s; background-color: rgb(37, 211, 102); width: 10.824738px; height: 10.824738px;"></div><div class="confetti" style="left: 43.543838vw; animation-delay: 0.996873s; background-color: rgb(37, 211, 102); width: 7.534157px; height: 7.534157px;"></div><div class="confetti" style="left: 34.220822vw; animation-delay: 1.027645s; background-color: rgb(255, 255, 255); width: 7.258766px; height: 7.258766px;"></div><div class="confetti" style="left: 96.546939vw; animation-delay: 2.821051s; background-color: rgb(37, 211, 102); width: 6.083373px; height: 6.083373px;"></div><div class="confetti" style="left: 44.226315vw; animation-delay: 1.162808s; background-color: rgb(255, 255, 255); width: 7.865532px; height: 7.865532px;"></div><div class="confetti" style="left: 24.027878vw; animation-delay: 2.589979s; background-color: rgb(255, 255, 255); width: 8.651104px; height: 8.651104px;"></div><div class="confetti" style="left: 12.053469vw; animation-delay: 0.547779s; background-color: rgb(0, 82, 34); width: 4.105663px; height: 4.105663px;"></div><div class="confetti" style="left: 92.340181vw; animation-delay: 0.268385s; background-color: rgb(0, 82, 34); width: 8.372597px; height: 8.372597px;"></div><div class="confetti" style="left: 90.68113vw; animation-delay: 0.471587s; background-color: rgb(255, 255, 255); width: 4.048108px; height: 4.048108px;"></div><div class="confetti" style="left: 27.440014vw; animation-delay: 0.115885s; background-color: rgb(155, 247, 169); width: 6.43891px; height: 6.43891px;"></div><div class="confetti" style="left: 1.28681vw; animation-delay: 2.921068s; background-color: rgb(155, 247, 169); width: 7.729304px; height: 7.729304px;"></div><div class="confetti" style="left: 46.606276vw; animation-delay: 1.383691s; background-color: rgb(37, 211, 102); width: 11.28553px; height: 11.28553px;"></div><div class="confetti" style="left: 67.147729vw; animation-delay: 2.284111s; background-color: rgb(255, 255, 255); width: 8.634498px; height: 8.634498px;"></div></div>
+</div>
+<div class="max-w-4xl mx-auto px-page-margin py-8 relative z-10">
+<!-- Hero Success Section -->
+<section class="text-center mb-10 flex flex-col items-center">
+<div class="relative mb-6">
+<div class="absolute inset-0 hero-gradient blur-3xl opacity-50 scale-150"></div>
+<div class="w-24 h-24 bg-primary rounded-full flex items-center justify-center shadow-lg relative animate-bounce">
+<span class="material-symbols-outlined text-on-primary text-5xl" style="font-variation-settings: &quot;FILL&quot; 1;">check_circle</span>
+</div>
+</div>
+<h2 class="font-headline-lg text-headline-lg mb-2 text-primary">Congratulations, You're Now a Pro!</h2>
+<p class="text-on-surface-variant max-w-xl font-body-lg text-body-lg">
+                    You've mastered the art of digital safety. Your vigilance is your best defense against scammers.
+                </p>
+</section>
+<!-- Bento Content Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-12">
+<!-- Accomplishment Card -->
+<div class="md:col-span-7 bg-surface p-6 rounded-xl shadow-sm border border-outline-variant flex flex-col gap-4 text-center items-center">
+<div class="flex items-center gap-3 text-secondary justify-center">
+<span class="material-symbols-outlined">verified_user</span>
+<h3 class="font-headline-md text-headline-md">Training Mastery</h3>
+</div>
+<p class="text-on-surface-variant font-body-md text-body-md">
+                        You successfully navigated through simulated threats, identifying and neutralising the most common messaging scams:
+                    </p>
+<div class="space-y-3 mx-auto">
+<div class="flex items-center gap-3 p-3 bg-whatsapp-incoming rounded-lg">
+<span class="material-symbols-outlined text-primary">family_restroom</span>
+<span class="font-label-md text-label-md">'Grandson in Trouble' Impersonation</span>
+</div>
+<div class="flex items-center gap-3 p-3 bg-whatsapp-incoming rounded-lg">
+<span class="material-symbols-outlined text-primary">redeem</span>
+<span class="font-label-md text-label-md">'Global Rewards' Lottery Scams</span>
+</div>
+<div class="flex items-center gap-3 p-3 bg-whatsapp-incoming rounded-lg">
+<span class="material-symbols-outlined text-primary">desktop_windows</span>
+<span class="font-label-md text-label-md">'Windows Security' Malware Alerts</span>
+</div>
+</div>
+</div>
+<!-- Illustration Card -->
+<div class="md:col-span-5 bg-secondary-container rounded-xl overflow-hidden shadow-sm relative group">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A warm, high-quality digital illustration of an elegant senior woman smiling confidently while holding a modern smartphone in a cozy, sunlit living room. She looks empowered and technologically savvy. The art style is modern with soft textures, using a color palette of sage green, warm creams, and gentle sunlight yellows to evoke safety and trust." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABpb74bP4NK2tmVjy9JwrYFifoSpMcJ61h2qQcWjSocCX_XNM0WvG6B4vsgyja4YRVd38w2ZADsZgtBo6aWBBq4WtqyIEDQreFjq2Z5eH278_5lh6lcdLB59WZcyzC5VEoH2SKwQ3lDC-YzM1JDRyrExqxOUQ6rjjgbg08YLtCOYJA51QaoMzSnp8GPsQuMIPIMIO3x6kTCgTv6-hOcjX5oe8wfw9qHMPQSZa20lmptCRJ1MrKJvMaLQ">
+<div class="absolute inset-0 bg-gradient-to-t from-secondary/80 to-transparent flex items-end p-6">
+<p class="text-on-secondary font-headline-md text-headline-md">Confidence is your shield.</p>
+</div>
+</div>
+<!-- Safety Checklist Summary -->
+<div class="md:col-span-12 bg-surface p-8 rounded-xl border-2 border-primary-fixed shadow-md relative">
+<div class="absolute top-4 right-4 text-primary-fixed-dim opacity-20">
+<span class="material-symbols-outlined text-8xl">rule</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">assignment_turned_in</span>
+                        Safety Checklist Summary
+                    </h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="flex flex-col gap-2">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">lightbulb</span>
+</div>
+<h4 class="font-headline-md text-headline-md">Think before you click</h4>
+<p class="text-label-md text-on-surface-variant leading-relaxed">Always verify the source. Links can be deceptive, even if they look official.</p>
+</div>
+<div class="flex flex-col gap-2">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">no_accounts</span>
+</div>
+<h4 class="font-headline-md text-headline-md">Never share personal info</h4>
+<p class="text-label-md text-on-surface-variant leading-relaxed">Real companies will never ask for passwords or PINs via a text message.</p>
+</div>
+<div class="flex flex-col gap-2">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">report</span>
+</div>
+<h4 class="font-headline-md text-headline-md">When in doubt, block</h4>
+<p class="text-label-md text-on-surface-variant leading-relaxed">It's better to be safe. Use the block and report features built into the app.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- CTA Actions -->
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4 pb-8">
+<button class="bg-primary hover:bg-primary-container text-on-primary font-headline-md text-headline-md py-4 px-10 rounded-full shadow-lg transition-all hover:scale-105 active:scale-95 flex items-center gap-2">
+                    Return to Academy
+                    <span class="material-symbols-outlined">home</span>
+</button>
+<button class="text-secondary font-headline-md text-headline-md py-4 px-10 rounded-full border border-secondary hover:bg-secondary-container transition-all flex items-center gap-2">Next Activity&nbsp;</button>
+</div>
+</div>
+</main>
+<!-- Footer (from JSON) -->
+<footer class="bg-surface-container dark:bg-surface-container-lowest w-full py-8 mt-auto border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center px-page-margin max-w-screen-xl mx-auto gap-stack-md">
+<div class="flex flex-col items-center md:items-start">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">SafeChat Academy</span>
+<p class="font-label-md text-label-md text-on-surface-variant mt-2 text-center md:text-left">
+                    © 2024 SafeChat Academy. This is an educational simulation, not affiliated with WhatsApp.
+                </p>
+</div>
+<div class="flex flex-wrap justify-center gap-4">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed underline cursor-pointer transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed underline cursor-pointer transition-colors" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed underline cursor-pointer transition-colors" href="#">Safety Guide</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed underline cursor-pointer transition-colors" href="#">Contact Support</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction: Confetti generation
+        function createConfetti() {
+            const container = document.getElementById('confetti-container');
+            const colors = ['#25d366', '#005222', '#9bf7a9', '#ffffff'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDelay = Math.random() * 3 + 's';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = Math.random() * 8 + 4 + 'px';
+                confetti.style.height = confetti.style.width;
+                container.appendChild(confetti);
+            }
+        }
+        
+        window.onload = createConfetti;
+
+        // Button hover sounds effect (simulated)
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                // Potential sound trigger logic
+            });
+        });
+    </script>
+
+
+</body></html>
